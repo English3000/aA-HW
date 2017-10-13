@@ -1,5 +1,5 @@
 class List
-  attr_reader :tail, :head
+  attr_accessor :tail, :head
 
   def initialize(head_value = nil, tail_value = nil)
     @tail = nil
@@ -32,8 +32,10 @@ class LinkedItem
   def delete
     if self == @list.tail
       self.prev.next = nil
+      @list.tail = self.prev
     elsif self == @list.head
       self.next.prev = nil
+      @list.head = self.next
     else
       self.prev.next = self.next
       self.next.prev = self.prev
@@ -41,7 +43,9 @@ class LinkedItem
   end
 end
 
-class LRUCache
+class LRUCache #-will debug further during study hall
+  attr_reader :capacity #for testing--why it isn't being enforced?
+
   def initialize(capacity)
     @cache = {}
     @capacity = capacity
@@ -49,29 +53,9 @@ class LRUCache
   end
 
   def count
-    @cache.size
+    @cache.keys.size
   end
 
-  #linked list for faster insertion/deletion
-  # create List class w/ auto. @head & @tail, double-linked
-  # create LinkedItem class w/ @prev, @next, & @value
-  # when #add(item), @tail.next is set to item & item.prev is set to tail
-    # OR if item exists, item.prev.next = item.next; delete & append
-    # if at capacity, delete head & set head.next.prev = nil
-  #EXCEPT @add(el) could be O(n)... so need hash w/ linked list values
-  # so @cache is #initialize'd as {}
-  # #add(el) -> @cache[el] = LinkedItem.new(el)
-  # LinkedItem#initialize sets @tail.next = el, el.prev = @tail,
-    # @tail = el, el.next = nil
-    # @tail refers to an element so #next & #prev modify the element
-    # thus, then setting @tail = el leaves the element intact
-      # b/c @tail is a var. of the List set to a LinkedItem
-  # to add, if @cache[el]; @cache.delete(el); @cache << el
-    # when a LinkedItem is deleted, its #prev is set as its #next's (& vice-versa)
-    # this would probably occur via a LinkedItem#delete method, so:
-      # if @cache[el]; @cache.delete(el.delete); @cache << el  #deletes both key & value
-  # elsif count >= @capacity; @cache.delete(@cache.first.delete); @cache << el
-  # else; @cache << el; end
   def add(el)
     if @cache[el]
       @cache[el].delete
@@ -80,7 +64,7 @@ class LRUCache
     elsif count >= @capacity
       head_el = @list.head
       @list.head.delete
-      @cache.delete(head_el.value)
+      @cache.delete(head_el.value) #why isn't key being deleted from @cache?
       @cache[el] = @list.add(el)
     else
       @cache[el] = @list.add(el)
@@ -88,12 +72,12 @@ class LRUCache
   end
 
   def show
-    p @cache
+    p @cache.keys
     nil
   end
 end
 
-if __FILE__ == $PROGRAM_NAME #don't know why this prints so much
+if __FILE__ == $PROGRAM_NAME
   johnny_cache = LRUCache.new(4)
 
   johnny_cache.add("I walk the line")
