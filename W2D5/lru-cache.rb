@@ -1,10 +1,13 @@
+require 'byebug'
+
 class List
   attr_accessor :tail, :head
 
   def initialize(head_value = nil, tail_value = nil)
+    @head = nil
     @tail = nil
     add(head_value)
-    @head = @tail
+    @head = @tail #switches @head to wrong @tail
     add(tail_value)
     @head.next = @tail
   end
@@ -14,6 +17,11 @@ class List
     unless @tail == nil
       @tail.next = new_item
     end
+
+    if @tail.prev == @head # head doesn't exist yet
+      @head = @tail
+    end
+
     @tail = new_item
   end
 end
@@ -25,7 +33,7 @@ class LinkedItem
   def initialize(value, list)
     @value = value
     @list = list
-    @prev = list.tail
+    @prev = @list.tail
     @next = nil
   end
 
@@ -57,14 +65,15 @@ class LRUCache #-will debug further during study hall
   end
 
   def add(el)
+    debugger
     if @cache[el]
       @cache[el].delete
       @cache.delete(el)
       @cache[el] = @list.add(el) #LinkedItem
     elsif count >= @capacity
       head_el = @list.head
+      @cache.delete(head_el.value) #head.value == nil... why?
       @list.head.delete
-      @cache.delete(head_el.value) #why isn't key being deleted from @cache?
       @cache[el] = @list.add(el)
     else
       @cache[el] = @list.add(el)
