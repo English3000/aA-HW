@@ -7,8 +7,10 @@ module ApplicationHelper
   end
 
   def footer_content
+    #  wouldn't need :footer block if implement as helper
     # <% content_for :footer do %>
-      "<p>This is the #{self} page.</p>".html_safe
+      debugger
+      "<p>This is the #{self} page.</p>".html_safe #would implement via JS
     # <% end %>
   end
 end
