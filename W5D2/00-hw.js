@@ -212,12 +212,21 @@ you want to build your parade (e.g. "_______ is trotting by!").
 Elephant.prototype.paradeHelper = function () {
   console.log(`${this.name} is trotting by!`);
 }
+// herd.forEach(function (elephant) {
+//   elephant.paradeHelper();
+// })
 
-herd.forEach(function (elephant) {
-  elephant.paradeHelper();
-})
-
-// order = "I'd like cheesy scrambled eggs please"
-// function dinerBreakfast(order) {
-//
-// }
+var orders = `I'd like cheesy scrambled eggs`
+let bfastOrder = function dinerBreakfast(order) {
+  if (order === undefined) {
+    console.log(`${orders} please`);
+  } else {
+    orders += ` and ${order}`
+    console.log(`${orders} please.`)
+  }
+}
+// "I'd like cheesy scrambled eggs please"
+bfastOrder("chocolate chip pancakes");
+// "I'd like cheesy scrambled eggs and chocolate chip pancakes please."
+bfastOrder("grits");
+// "I'd like cheesy scrambled eggs and chocolate chip pancakes and grits please."
