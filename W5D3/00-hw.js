@@ -58,17 +58,17 @@ Define a function isPrime(number) that returns true if number is prime.
 Otherwise, false. Assume number is a positive integer.
 */
 function isPrime(number) {
-  if (number <= 1) {
+  if (number <= 1) { return false;}
     // console.log(false);
-    return false;
-  } else {
-    for (let div = 2; div < number; div++) {
-      if (number%div === 0) {
-        // console.log(false);
-        return false;
-      }
+    // return false; }
+  // } else {
+  for (let div = 2; div < number; div++) {
+    if (number%div === 0) {
+      // console.log(false);
+      return false;
     }
   }
+  // }
   // console.log(true);
   return true;
 }
@@ -91,8 +91,24 @@ Using firstNPrimes, write a function sumOfNPrimes(n)
 that returns the sum of the first n prime numbers.
 Hint: use isPrime as a helper method.
 */
+// function sumOfNPrimes (n) {
+//   let sum = 0;
+//   let countPrimes = 0;
+//   let i = 2;
+//
+//   while (countPrimes < n) {
+//     if (isPrime(i)) {
+//       sum += i;
+//       countPrimes++;
+//     }
+//     i++;
+//   }
+//
+//   return sum;
+// }
 function sumOfNPrimes(n) {
-  var sum = 0;
+  // var sum = 0;
+  let sum = 0;
   for (let i = 2; i === i; i++) {
     if (n === 0) {
       console.log(sum);
@@ -121,6 +137,16 @@ array full of titleized versions of each name - titleize meaning
 Then pass this new array of names to the callback, which should use
 Array.prototype.forEach to print out each titleized name.
 */
+// defining the function
+// function titleize(names, callback) {
+//   let titleized = names.map(name => `Mx. ${name} Jingleheimer Schmidt`);
+//   callback(titleized);
+// };
+
+// invoking the function
+// titleize(["Mary", "Brian", "Leo"], (names) => {
+//   names.forEach(name => console.log(name));
+// });
 function titleize(names_arr, callback) {
   let new_arr = names_arr.map(function (name) {
     return name.slice(0, 1).toUpperCase() + name.slice(1, name.length);
@@ -216,6 +242,15 @@ Elephant.prototype.paradeHelper = function () {
 //   elephant.paradeHelper();
 // })
 
+// function dinerBreakfast() {
+//   let order = "I'd like cheesy scrambled eggs please.";
+//   console.log(order);
+//
+//   return function (food) {
+//     order = `${order.slice(0, order.length - 8)} and ${food} please.`;
+//     console.log(order);
+//   };
+// };
 var orders = `I'd like cheesy scrambled eggs`
 let bfastOrder = function dinerBreakfast(order) {
   if (order === undefined) {
