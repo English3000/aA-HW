@@ -21,12 +21,12 @@ class Calculator extends React.Component {
   }
 
   setNum1(event) {
-    const num1 = parseInt(event.target.value);
+    const num1 = e.target.value ? parseInt(event.target.value);
     this.setState({num1});
   }
 
   setNum2(event) {
-    const num2 = parseInt(event.target.value);
+    const num2 = e.target.value ? parseInt(event.target.value);
     this.setState({num2});
   }
 
