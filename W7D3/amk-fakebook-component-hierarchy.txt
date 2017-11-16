@@ -1,0 +1,154 @@
+FAKEBOOK COMPONENT HIERARCHY
+Alexander Marks-Katz | W7D3
+
+--NOTE: (0) Facebook has a LOT of features. It'd probably be good to discuss
+          a timeline for the required features, and make a game plan for bonus
+          features.
+        (1) After deciding on that, what's a good site for making wireframes?--
+
+> App
+  * Session Page
+    > header (logo, login form) [display: flex; justify-content: space-between]
+      * login form (email, password, button)
+
+    > main (product overview, signup form) [2 flexboxes]
+      * signup form
+
+    > footer (languages, links, copyright)
+
+
+  * Newsfeed/Posts Index
+    > header
+      * logo button
+      * searchbar
+        > top results
+      * nav
+        > wall
+        > newsfeed
+        > friend requests icon
+          * header
+          * items
+          * footer
+        > messages icon
+          * header
+          * items
+          * footer
+        > notifications icon
+          * header
+          * subheadings
+          * items
+          * footer
+        > help icon
+          * link items
+        > dropdown icon
+          * link items
+
+    > shortcuts/quick links aside (& footer)
+      * link items
+        > icon
+        > link text
+        > #
+
+    > main/posts list
+      * post form
+        > header nav links
+        > main
+          * profile pic
+          * form
+            > form on click
+              * dimmed background
+                > form
+                * profile pic
+                * textbox
+                * row of background color buttons
+                * "stickers"
+                  > sticker items
+                * footer
+                  > post privacy
+                  > submit button
+        > footer "stickers"
+      * post items
+        > header
+        > main
+          * text
+          * picture
+          * description
+          * footer
+            > Like
+            > Comment
+            > Share
+        > likes
+        > comment form
+          * profile pic
+          * create comment
+            > input box
+            > 4 buttons
+
+    > other/section [scroll -> fixed]
+      * events & birthdays box
+        > event link item
+        > birthdays link item
+      * trending box
+        > heading & nav tabs [display: flex; justify-content: space-between]
+        > news items [hover & tooltip]
+        > See More [clicking expands height]
+          * more news items
+          * Learn More link
+      * marketplace ads box
+        > heading
+        > ad items
+        > See More link
+      * suggested groups box
+        > heading & link [display: flex; justify-content: space-between]
+        > ad items
+      * languages box (links)
+      * footer
+        > links
+        > copyright
+
+    > chatbar aside/fixed bottom [media queries]
+      * friend items (image, name, last active) [hover & tooltip]
+        > chat window [fixed, to the left]
+          * header
+            > friend name link
+            > add friends to chat
+          * main
+          * create message
+          * footer icons
+      * friend search
+        > icon
+        > searchbar
+        > 3 buttons
+
+
+  * Wall
+    > header {same as newsfeed}
+
+    > top section [scroll -> fixed]
+      * cover photo
+      * profile pic [different styling; fixed aside]
+      * Friends button row [on other users' walls]
+      * info row
+        > username
+        > Update Info button
+        > privacy container
+          * View Activity Log button
+          * dropdown button
+      * tabs row
+        > Timeline
+        > About
+        > Friends & #
+        > Photos
+        > dropdown button
+
+    > aside
+      * Intro box
+      * Photos box
+      * Friends box
+      * Album box
+      * languages box {same as newsfeed}
+      * footer {same one as newsfeed}
+
+    > main {same as newsfeed; user's posts & friends who posted to wall}
+
+    > chatbar aside {same as newsfeed}
